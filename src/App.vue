@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Nav/>
+    <Nav :loginType="loginType" @setloginType="loginType=$event"/>
     <router-view></router-view>
     <!-- <Home/>
     <Reg/>
@@ -21,6 +21,11 @@ export default {
   components: {
     Nav
    
+  },
+  data:function(){
+    return {
+      loginType: Boolean
+    }
   }
 }
 </script>

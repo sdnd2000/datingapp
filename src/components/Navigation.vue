@@ -12,15 +12,30 @@
                 <a class="nav-link " href="#">Messages</a>
             </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Username" >
-                <input class="form-control mr-sm-2" type="Password" placeholder="Password" >
-                <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
-            </form>
+             <div class="dropdown" v-if ="login">
+                <a class="dropdown-toggle text-light">
+                    Welcome User
+                </a>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i>Logout</a>
+                </div>
+            </div>
 </nav>
 </template>
 <script>
+import {eventBus} from '../main';
 export default {
+    props: {
+        login:Boolean
+    },
+    created(){
+        eventBus.$on('login',(data)=>{
+            this.login = data;
+        })
+    }
     
 }
 </script>
